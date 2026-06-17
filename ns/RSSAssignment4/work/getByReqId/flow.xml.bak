@@ -10,7 +10,7 @@
 
   <!-- nodes -->
 
-<INVOKE TIMEOUT="" SERVICE="RSSAssignment4.adapter:getReqById" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="RSSAssignment4.adapter.db:getReqById" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -785,7 +785,7 @@
 
   <!-- nodes -->
 
-<INVOKE TIMEOUT="" SERVICE="RSSAssignment4.adapter:getResByTestId" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="RSSAssignment4.adapter.db:getResByTestId" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -1116,7 +1116,25 @@
 <MAPDELETE FIELD="/getResByTestIdOutput;2;0">
 </MAPDELETE>
 
-<MAPCOPY FROM="/getResByTestIdOutput;2;0/results;2;1" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;0;RSSAssignment4.document:SamplingTest/testResult;4;1;RSSAssignment4.document:TestResult">
+<MAPCOPY FROM="/getResByTestIdOutput;2;0/results;2;1/RESULT_ID;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;0;RSSAssignment4.document:SamplingTest/testResult;4;1;RSSAssignment4.document:TestResult/resultId;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getResByTestIdOutput;2;0/results;2;1/TEST_ID;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;0;RSSAssignment4.document:SamplingTest/testResult;4;1;RSSAssignment4.document:TestResult/testId;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getResByTestIdOutput;2;0/results;2;1/PARAMETER;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;0;RSSAssignment4.document:SamplingTest/testResult;4;1;RSSAssignment4.document:TestResult/parameter;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getResByTestIdOutput;2;0/results;2;1/RESULT_VALUE;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;0;RSSAssignment4.document:SamplingTest/testResult;4;1;RSSAssignment4.document:TestResult/resultValue;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getResByTestIdOutput;2;0/results;2;1/TEST_METHOD;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;0;RSSAssignment4.document:SamplingTest/testResult;4;1;RSSAssignment4.document:TestResult/testMethod;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getResByTestIdOutput;2;0/results;2;1/SAMPLING_DATE;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;0;RSSAssignment4.document:SamplingTest/testResult;4;1;RSSAssignment4.document:TestResult/samplingDate;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getResByTestIdOutput;2;0/results;2;1/REMARKS;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;0;RSSAssignment4.document:SamplingTest/testResult;4;1;RSSAssignment4.document:TestResult/remarks;1;0">
 </MAPCOPY>
 </MAP>
 </INVOKE>
