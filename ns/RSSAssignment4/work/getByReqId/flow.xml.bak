@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FLOW VERSION="3.0" CLEANUP="true">
+  <COMMENT></COMMENT>
 
   <!-- nodes -->
 
@@ -8,10 +9,6 @@
   <COMMENT></COMMENT>
 
   <!-- nodes -->
-
-<MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT></COMMENT>
-</MAP>
 
 <INVOKE TIMEOUT="" SERVICE="RSSAssignment4.adapter:getReqById" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
@@ -754,20 +751,34 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/getTestByReqIdOutput;2;0/results;2;1" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;1;RSSAssignment4.document:SamplingTest">
-</MAPCOPY>
-
 <MAPDELETE FIELD="/getTestByReqIdOutput;2;0">
 </MAPDELETE>
 
 <MAPDELETE FIELD="/getTestByReqIdInput;2;0">
 </MAPDELETE>
+
+<MAPCOPY FROM="/getTestByReqIdOutput;2;0/results;2;1/TEST_ID;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;1;RSSAssignment4.document:SamplingTest/testId;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getTestByReqIdOutput;2;0/results;2;1/REQUEST_ID;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;1;RSSAssignment4.document:SamplingTest/requestId;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getTestByReqIdOutput;2;0/results;2;1/SAMPLING_LOCATION;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;1;RSSAssignment4.document:SamplingTest/samplingLocation;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getTestByReqIdOutput;2;0/results;2;1/SAMPLING_POINT;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;1;RSSAssignment4.document:SamplingTest/samplingPoint;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getTestByReqIdOutput;2;0/results;2;1/SAMPLING_DATE;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;1;RSSAssignment4.document:SamplingTest/samplingDate;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getTestByReqIdOutput;2;0/results;2;1/SAMPLING_STATUS;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;1;RSSAssignment4.document:SamplingTest/samplingStatus;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/getTestByReqIdOutput;2;0/results;2;1/DELAY_JUSTIFICATION;1;0" TO="/samplingRequest;4;0;RSSAssignment4.document:SamplingRequest/samplingTest;4;1;RSSAssignment4.document:SamplingTest/delayJustification;1;0">
+</MAPCOPY>
 </MAP>
 </INVOKE>
-
-<MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT></COMMENT>
-</MAP>
 
 <LOOP TIMEOUT="" IN-ARRAY="/samplingRequest/samplingTest">
   <COMMENT></COMMENT>
@@ -1119,6 +1130,11 @@
 
 <INVOKE TIMEOUT="" SERVICE="pub.flow:getLastError" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<MAP MODE="OUTPUT">
+</MAP>
 </INVOKE>
 </SEQUENCE>
 </FLOW>
