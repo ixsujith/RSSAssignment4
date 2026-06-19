@@ -19,6 +19,16 @@
 
   <!-- nodes -->
 
+<BRANCH TIMEOUT="" SWITCH="/samplingRequest/requestId">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<SEQUENCE NAME="/[^ ]/" TIMEOUT="" EXIT-ON="FAILURE">
+  <COMMENT>== Update request ==</COMMENT>
+
+  <!-- nodes -->
+
 <INVOKE TIMEOUT="" SERVICE="RSSAssignment4.adapter.util:checkDraftOrCompleted" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
@@ -327,16 +337,6 @@
 </MAPDELETE>
 </MAP>
 </INVOKE>
-
-<BRANCH TIMEOUT="" SWITCH="/samplingRequest/requestId">
-  <COMMENT></COMMENT>
-
-  <!-- nodes -->
-
-<SEQUENCE NAME="/[^ ]/" TIMEOUT="" EXIT-ON="FAILURE">
-  <COMMENT>== Update request ==</COMMENT>
-
-  <!-- nodes -->
 
 <BRANCH TIMEOUT="" SWITCH="/requestStatus">
   <COMMENT></COMMENT>
@@ -681,7 +681,7 @@
 </MAP>
 
 <MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT></COMMENT>
+  <COMMENT>== Updating request list ==</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -1286,6 +1286,12 @@
 
 <SEQUENCE NAME="$default" TIMEOUT="" EXIT-ON="FAILURE">
   <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<EXIT FROM="$iteration" SIGNAL="SUCCESS" FAILURE-MESSAGE="">
+  <COMMENT></COMMENT>
+</EXIT>
 </SEQUENCE>
 </BRANCH>
 </SEQUENCE>
