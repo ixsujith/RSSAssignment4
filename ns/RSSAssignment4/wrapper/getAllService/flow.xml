@@ -7,5 +7,10 @@
 
 <INVOKE TIMEOUT="" SERVICE="RSSAssignment4.work:getAll" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<MAP MODE="OUTPUT">
+</MAP>
 </INVOKE>
 </FLOW>
